@@ -6,12 +6,19 @@ class LineGraph:
     lineGraph = pygal.Line()
 
     def __init__(self, title, allruns, lengthOfPath):
-        self.lineGraph.title = "Performance Over Time"
+        self.lineGraph.title = title
 
-        for runData in allruns:
-            # Should loop through
+        self.lineGraph.x_labels = map(str, range(0, lengthOfPath))
+
+        buffer = np.array([])
+
+        for i in range(lengthOfPath):
+            buffer = np.append(buffer, allruns[i, 0])
             pass
-        pass
+
+        print(allruns.flatten().tolist())
+        print(buffer.tolist())
+        self.lineGraph.add(self.lineGraph.title, buffer)
 
     def draw(self):
-        pass
+        self.lineGraph.render_in_browser()

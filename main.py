@@ -6,18 +6,13 @@
 import numpy as np
 import graphics
 
-performanceContainer = np.array
+performanceContainer = np.array([[0,0], [3,0], [6,3], [9,1], [12,2], [15,0], [18,3], [21,1]])
 
-
-
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
 
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
+print(performanceContainer.itemsize)
+graph = graphics.LineGraph('TestGraph', performanceContainer, 8)
+
+graph.draw()
+
+print('test')

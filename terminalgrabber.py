@@ -1,0 +1,1 @@
+# Here will be a class that grabs the file output of the terminal and saves it to the computer system.
