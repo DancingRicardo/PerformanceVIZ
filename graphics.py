@@ -10,15 +10,20 @@ class LineGraph:
 
         self.lineGraph.x_labels = map(str, range(0, lengthOfPath))
 
-        buffer = np.array([])
+        distanceBuffer = np.array([])
+        timeBuffer = np.array([])
 
         for i in range(lengthOfPath):
-            buffer = np.append(buffer, allruns[i, 0])
+            distanceBuffer = np.append(distanceBuffer, allruns[i, 0])
+            pass
+        for i in range(lengthOfPath):
+            timeBuffer = np.append(timeBuffer, allruns[i, 1])
             pass
 
         print(allruns.flatten().tolist())
-        print(buffer.tolist())
-        self.lineGraph.add(self.lineGraph.title, buffer)
+        print(timeBuffer.tolist())
+        self.lineGraph.add("Max Distance", distanceBuffer)
+        self.lineGraph.add("Time To Finish", timeBuffer)
 
     def draw(self):
         self.lineGraph.render_in_browser()
