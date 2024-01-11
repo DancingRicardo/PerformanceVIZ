@@ -13,14 +13,16 @@ class LineGraph:
         distanceBuffer = np.array([])
         timeBuffer = np.array([])
 
-        for i in range(lengthOfPath):
-            distanceBuffer = np.append(distanceBuffer, allruns[i, 0])
-            pass
-        for i in range(lengthOfPath):
-            timeBuffer = np.append(timeBuffer, allruns[i, 1])
-            pass
+        print("All Runs: ", allruns)
 
-        print(allruns.flatten().tolist())
+        for i in range(0, lengthOfPath):
+            print(allruns[i])
+            if i % 2:
+                timeBuffer = np.append(timeBuffer, allruns[i])
+            else:
+                distanceBuffer = np.append(distanceBuffer, allruns[i])
+
+        print(allruns.tolist())
         print(timeBuffer.tolist())
         self.lineGraph.add("Max Distance", distanceBuffer)
         self.lineGraph.add("Time To Finish", timeBuffer)
