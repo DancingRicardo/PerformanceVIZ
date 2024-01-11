@@ -17,9 +17,12 @@ performanceContainer = np.array([])
 textObj = textinput.TextInputVisualizer()
 
 screen = pg.display.set_mode((1000, 700))
+pg.display.set_caption('Performance VIZ')
+
 clock = pg.time.Clock()
 
-while True:
+exitLoop = False
+while not exitLoop:
     screen.fill((225, 225, 225))
 
     events = pg.event.get()
@@ -31,22 +34,23 @@ while True:
 
     for event in events:
         if event.type == pg.QUIT:
-            exit()
+            exitLoop = True
         if event.type == pg.KEYDOWN and event.key == pg.K_RETURN:
-            exit()
+            exitLoop = True
     buffer = tg.readPerformance(textObj.value)
+    performanceContainer = []
     performanceContainer = np.append(performanceContainer, buffer)
 
     pg.display.update()
     clock.tick(30)
 
-
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
-print(performanceContainer.itemsize)
-graph = graphics.LineGraph('TestGraph', performanceContainer, 8)
+print("help")
+graph = graphics.LineGraph('Performance Comparison', performanceContainer, performanceContainer.size)
 
 tg.saveResults()
 
 graph.draw()
 
+exit()
 
